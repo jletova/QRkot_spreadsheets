@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.crud.base import CRUDBase
 from app.models.charity_project import CharityProject
+from app.schemas.charity_project import CharityProjectDB
 
 
 class CRUDCharityProject(CRUDBase):
@@ -24,7 +25,7 @@ class CRUDCharityProject(CRUDBase):
     async def get_projects_by_completion_rate(
             self,
             session: AsyncSession,
-    ) -> Optional[list]:
+    ) -> Optional[CharityProjectDB]:
         projects = await session.execute(
             select(
                 [

@@ -9,6 +9,7 @@ from app.crud.charity_project import projects_crud
 from app.services.google_api import (
     spreadsheets_create, set_user_permissions, spreadsheets_update_value
 )
+from app.schemas.charity_project import CharityProjectDB
 
 
 router = APIRouter()
@@ -16,7 +17,7 @@ router = APIRouter()
 
 @router.post(
     '/',
-    response_model=list[dict[str, int]],
+    response_model=list[CharityProjectDB],
     dependencies=[Depends(current_superuser)],
 )
 async def get_report(

@@ -3,6 +3,7 @@ from datetime import datetime
 from aiogoogle import Aiogoogle
 
 from app.core.config import settings
+from app.schemas.charity_project import CharityProjectDB
 
 
 FORMAT = "%Y/%m/%d %H:%M:%S"
@@ -45,7 +46,7 @@ async def set_user_permissions(
 
 async def spreadsheets_update_value(
         spreadsheetid: str,
-        projects: list,
+        projects: CharityProjectDB,
         wrapper_services: Aiogoogle
 ) -> None:
     now_date_time = datetime.now().strftime(FORMAT)
